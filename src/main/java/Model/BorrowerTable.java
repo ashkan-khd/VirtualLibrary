@@ -3,6 +3,7 @@ package Model;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BorrowerTable extends Database{
 
@@ -33,5 +34,14 @@ public class BorrowerTable extends Database{
         preparedStatement.setString(1, email);
         preparedStatement.setString(2, username);
         preparedStatement.execute();
+    }
+
+    public static ArrayList<Book> getBorrowedBooks(String username) throws SQLException, ClassNotFoundException
+    {
+        String command = "SELECT * From Books WHERE Borrower = ? AND isBorrowed = ?";
+        PreparedStatement preparedStatement = getPreparedStatement(command);
+        preparedStatement.setString(1, username);
+        preparedStatement.setBoolean(2, true);
+        return BookTable.getBooksFromResultSet(preparedStatement.executeQuery());
     }
 }

@@ -1,9 +1,12 @@
 package Controller.Account;
 
 
+import Model.Book;
+import Model.BookTable;
 import Model.BorrowerTable;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BorrowerController {
     private static BorrowerController controller = null;
@@ -51,6 +54,70 @@ public class BorrowerController {
     {
         try {
             BorrowerTable.setEmail(this.username, email);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Book> getBorrowedBooks() {
+        try {
+            return BorrowerTable.getBorrowedBooks(this.username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean isIdCorrect(String id) {
+        try {
+            return BookTable.isThereBookID(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean canBorrowBook(String id) {
+        try {
+            return !(BookTable.isBorrowed(id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public void borrowBook(String id) {
+        try {
+            BookTable.borrowBook(id, this.username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isBookBorrowed(String id) {
+        try {
+            return BookTable.isBorrowedBy(id, this.username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public void giveBackBorrowedBook(String id) {
+        try {
+            BookTable.getBackBorrowedBook(id);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

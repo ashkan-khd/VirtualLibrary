@@ -20,6 +20,7 @@ public abstract class Processor {
         allProcessors.put("Main Menu Processor", MainMenuProcessor.getProcessor());
         allProcessors.put("IO Processor", IOProcessor.getProcessor());
         allProcessors.put("Borrower Processor", BorrowerProcessor.getProcessor());
+        allProcessors.put("Donator Processor", DonatorProcessor.getProcessor());
     }
 
     public static HashMap<String, Processor> getAllProcessors() {

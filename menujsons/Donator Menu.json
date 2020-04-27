@@ -1,0 +1,8 @@
+{
+  "name" : "Donator Menu",
+  "commandProcessor" : "Donator Processor",
+  "parentMenu" : "Main Menu",
+  "options" : [
+    "Show Donated Books", "Donate Book", "Log out"
+  ]
+}

@@ -8,9 +8,10 @@ import java.util.regex.Pattern;
 
 public class IOProcessor extends Processor {
     private static IOProcessor processor = null;
-    private IOController controller = IOController.getController();
+    private IOController controller;
 
     private IOProcessor() {
+        this.controller = IOController.getController();
         allMethods.put("Sign Up", new FunctioningOption() {
             public Menu doSth() {
                 return signUp();

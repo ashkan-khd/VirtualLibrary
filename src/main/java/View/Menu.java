@@ -1,7 +1,6 @@
 package View;
 
 import View.Process.Processor;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
@@ -44,7 +43,6 @@ public class Menu {
                 json += scanf.nextLine();
                 json += "\n";
             }
-            //System.out.println("JSON IS = " + json.substring(0, json.length() - 1));
             return json.substring(0, json.length() - 1);
         }
         System.out.println("Menu File Not Found");

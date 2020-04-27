@@ -39,7 +39,6 @@ public class Database {
                         "Firstname varchar(50)," +
                         "Lastname varchar(50)," +
                         "Email varchar(50)," +
-                        "BorrowedBooks varchar(1000)," +
                         "primary key(Username)" +
                         ");");
             }
@@ -49,11 +48,23 @@ public class Database {
                 statement.execute("CREATE TABLE Donators (" +
                         "Username varchar(25)," +
                         "Password varchar(50)," +
-                        "Firstname varchar(50)," +
-                        "Lastname varchar(50)," +
                         "primary key(Username)" +
                         ");");
             }
+            resultSet = statement.executeQuery("SELECT name from sqlite_master WHERE type = 'table' AND name = 'Books'");
+            if(!resultSet.next())
+            {
+                statement.execute("CREATE TABLE Books (" +
+                        "BookID varchar (10)," +
+                        "BookName varchar (50)," +
+                        "Donator varchar (25)," +
+                        "isBorrowed bit," +
+                        "Borrower varchar (25)," +
+                        "primary key(BookID)" +
+                        ");");
+            }
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {

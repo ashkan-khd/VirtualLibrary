@@ -22,6 +22,14 @@ public class IOController {
         return isLoggedIn;
     }
 
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
+    }
+
+    public boolean isBorrower() {
+        return isBorrower;
+    }
+
     public boolean isUsernameFree(String username)
     {
         try {
@@ -70,6 +78,7 @@ public class IOController {
 
     public void signIn(String username, String type)
     {
+        isLoggedIn = true;
         if(type.equals("Borrower"))
         {
             isBorrower = true;
@@ -78,7 +87,7 @@ public class IOController {
         else
         {
             isBorrower = false;
-            //TODO
+            DonatorController.getController().setUsername(username);
         }
 
     }
