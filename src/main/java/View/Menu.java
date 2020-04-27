@@ -102,4 +102,8 @@ public class Menu {
     public static Scanner getIn() {
         return in;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

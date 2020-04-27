@@ -13,7 +13,12 @@ public class IOProcessor extends Processor {
     private IOProcessor() {
         allMethods.put("Sign Up", new FunctioningOption() {
             public Menu doSth() {
-                return SignUp();
+                return signUp();
+            }
+        });
+        allMethods.put("Sign In", new FunctioningOption() {
+            public Menu doSth() {
+                return signIn();
             }
         });
     }
@@ -24,7 +29,7 @@ public class IOProcessor extends Processor {
         return processor;
     }
 
-    public Menu SignUp()
+    public Menu signUp()
     {
         while (true)
         {
@@ -62,6 +67,36 @@ public class IOProcessor extends Processor {
             else
                 System.out.println("Invalid Command");
         }
-
     }
+
+    public Menu signIn()
+    {
+        while (true)
+        {
+            System.out.println("0. Back");
+            System.out.println("Please Enter Your Username: ");
+            String username = Menu.getIn().nextLine().trim();
+            if(username.equals("0"))
+                return Menu.makeMenu("IOMenu");
+            if(!controller.isUsernameFree(username))
+            {
+                System.out.println("Please Enter Your Password: ");
+                String password = Menu.getIn().nextLine().trim();
+                if(controller.isPasswordCorrect(username, password))
+                {
+                    System.out.println("Successfully Logged In :)");
+                    String type = controller.getAccountType(username);
+                    controller.signIn(username, type);
+                    Menu menu = Menu.makeMenu(type + " Menu");
+                    menu.setName(username + " Menu");
+                    menu.show();
+                }
+                else
+                    System.out.println("Wrong Password");
+            }
+            else
+                System.out.println("Username is not registered");
+        }
+    }
+
 }

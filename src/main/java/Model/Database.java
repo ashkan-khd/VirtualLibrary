@@ -8,12 +8,17 @@ public class Database {
     private static boolean isDatabaseInit = false;
     private static String localDBUrl = "jdbc:sqlite:database\\database.sqlite";
 
-    public static Connection getConnection() throws ClassNotFoundException, SQLException {
+    protected static Connection getConnection() throws ClassNotFoundException, SQLException {
         if(!isDatabaseInit)
             initDatabase();
         if(connection == null)
             connection = DriverManager.getConnection(localDBUrl);
         return connection;
+    }
+
+    protected static PreparedStatement getPreparedStatement(String command) throws SQLException, ClassNotFoundException
+    {
+        return getConnection().prepareStatement(command);
     }
 
     private static void initDatabase() throws ClassNotFoundException{
@@ -33,6 +38,8 @@ public class Database {
                         "Password varchar(50)," +
                         "Firstname varchar(50)," +
                         "Lastname varchar(50)," +
+                        "Email varchar(50)," +
+                        "BorrowedBooks varchar(1000)," +
                         "primary key(Username)" +
                         ");");
             }

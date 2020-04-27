@@ -1,0 +1,8 @@
+{
+  "name" : "Borrower Menu",
+  "commandProcessor" : "Borrower Processor",
+  "parentMenu" : "Main Menu",
+  "options" : [
+    "Show Personal Info", "Edit Personal Info", "Show Borrowed Books", "Edit Borrowed Books", "Log out"
+  ]
+}

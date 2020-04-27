@@ -19,6 +19,7 @@ public abstract class Processor {
         isProcessInit = true;
         allProcessors.put("Main Menu Processor", MainMenuProcessor.getProcessor());
         allProcessors.put("IO Processor", IOProcessor.getProcessor());
+        allProcessors.put("Borrower Processor", BorrowerProcessor.getProcessor());
     }
 
     public static HashMap<String, Processor> getAllProcessors() {
