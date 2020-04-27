@@ -1,0 +1,7 @@
+{
+  "name" : "Main Menu",
+  "commandProcessor" : "Main Menu Processor",
+  "options" : [
+    "User Menu", "Books"
+  ]
+}

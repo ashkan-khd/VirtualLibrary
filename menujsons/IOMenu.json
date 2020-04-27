@@ -1,0 +1,8 @@
+{
+  "name" : "User Menu",
+  "commandProcessor" : "IO Processor",
+  "parentMenu" : "Main Menu",
+  "options" : [
+    "Sign In", "Sign Up"
+  ]
+}
